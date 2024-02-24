@@ -1,0 +1,254 @@
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+    window.onload=function(){ 
+    const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+    
+    const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+    
+    // do the work...
+    document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+        const table = th.closest('table');
+        Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+            .forEach(tr => table.appendChild(tr) );
+    })));
+    
+    }
+    </script>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    th {
+        cursor: pointer;
+    }
+    </style>
+    <table>
+<tr><th>date</th><th>build_year</th><th>price</th><th>mileage</th><th>title</th></tr>
+<tr><td>Vandaag</td><td>2020.0</td><td>€ 7.200,-</td><td>9.349 km</td><td>YAMAHA MT-07 ABS (bj 2020) ABS MT07</td></tr>
+<tr><td>9 feb. '24</td><td>2014.0</td><td>€ 5.650,-</td><td>28.480 km</td><td>Yamaha MT-07 2014</td></tr>
+<tr><td>Vandaag</td><td>2019.0</td><td>€ 6.945,-</td><td>17.455 km</td><td>YAMAHA MT 07 ABS (bj 2019) MT07 35KW A2 Geschikt</td></tr>
+<tr><td>27 jan. '24</td><td>2021.0</td><td>€ 8.000,-</td><td>22.458 km</td><td>Yamaha MT-07 35kW/A2</td></tr>
+<tr><td>8 feb. '24</td><td>2017.0</td><td>€ 5.800,-</td><td>37.000 km</td><td>YAMAHA MT-07 ABS</td></tr>
+<tr><td>Eergisteren</td><td>2017.0</td><td>€ 6.700,-</td><td>26.300 km</td><td>Yamaha MT-07 | ABS | 2017</td></tr>
+<tr><td>7 feb. '24</td><td>2021.0</td><td>€ 8.149,-</td><td>7.321 km</td><td>Yamaha MT-07 BJ 2021 STORM FLUO</td></tr>
+<tr><td>12 feb. '24</td><td>2016.0</td><td>€ 4.100,-</td><td>57.000 km</td><td>Yamaha MT-07 2016</td></tr>
+<tr><td>Gisteren</td><td>2022.0</td><td>€ 7.950,-</td><td>3.283 km</td><td>Yamaha MT-07 35KW (bj 2022)</td></tr>
+<tr><td>5 feb. '24</td><td>nan</td><td>€ 6.250,-</td><td>nan</td><td>MT-07 2016 Akrapovic</td></tr>
+<tr><td>28 jan. '24</td><td>2017.0</td><td>€ 8.500,-</td><td>nan</td><td>Yamaha MT-07 Tracer 7 - A2</td></tr>
+<tr><td>9 feb. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>30.000 km</td><td>MT-07 ABS A2 of A in perfecte staat</td></tr>
+<tr><td>10 feb. '24</td><td>2017.0</td><td>€ 6.500,-</td><td>26.248 km</td><td>Yamaha MT-07 ABS 35kW (A2) 2017 Mivv uitlaat</td></tr>
+<tr><td>11 feb. '24</td><td>2016.0</td><td>€ 6.850,-</td><td>21.069 km</td><td>Yamaha MT-07 35KW A2 motor 2016 SC Project</td></tr>
+<tr><td>4 feb. '24</td><td>2019.0</td><td>€ 7.490,-</td><td>8.188 km</td><td>Yamaha MT-07 35KW (bj 2019)</td></tr>
+<tr><td>21 jan. '24</td><td>2019.0</td><td>€ 6.995,-</td><td>16.999 km</td><td>Yamaha MT-07 mt07 ABS (2019) *35KW mog.*</td></tr>
+<tr><td>1 feb. '24</td><td>2017.0</td><td>€ 6.600,-</td><td>17.000 km</td><td>Yamaha MT-07 ABS Night fluo 2017</td></tr>
+<tr><td>20 jan. '24</td><td>2022.0</td><td>€ 8.150,-</td><td>5.065 km</td><td>YAMAHA MTN690 MT-07 mt07 mt-07 (bj 2022) yamaha Topmotor</td></tr>
+<tr><td>17 jan. '24</td><td>2016.0</td><td>€ 7.850,-</td><td>18.119 km</td><td>Yamaha Tracer 700 mt-07 mt07 ABS (2016) *Kofferset*</td></tr>
+<tr><td>27 jan. '24</td><td>2023.0</td><td>€ 8.500,-</td><td>5.795 km</td><td>Yamaha MT-07  (2023) FABRIEKSGARANTIE 04-2025</td></tr>
+<tr><td>1 feb. '24</td><td>2018.0</td><td>€ 6.999,-</td><td>7.390 km</td><td>Yamaha MT-07 abs (bj 2018)</td></tr>
+<tr><td>4 feb. '24</td><td>2020.0</td><td>€ 6.950,-</td><td>19.500 km</td><td>MT07   MT-07   mt 07   2020 abs</td></tr>
+<tr><td>8 feb. '24</td><td>2023.0</td><td>€ 7.450,-</td><td>7.781 km</td><td>Yamaha Tour MT-07 / Eerste Eigenaar / Dubbele Remschijf / AB</td></tr>
+<tr><td>12 feb. '24</td><td>2021.0</td><td>€ 9.250,-</td><td>3.838 km</td><td>Yamaha Tracer 7 700 in perfecte staat (bj 2021) mt-07 tracer</td></tr>
+<tr><td>13 feb. '24</td><td>2018.0</td><td>€ 6.999,-</td><td>12.874 km</td><td>Yamaha MT-07 ABS Matgrijs MT07 Puig windscherm MT 07 bj.2018</td></tr>
+<tr><td>12 feb. '24</td><td>2018.0</td><td>€ 6.990,-</td><td>36.357 km</td><td>Supermooie Yamaha MT-07 ABS MT07ABS | 35KW (bj 2018)</td></tr>
+<tr><td>23 jan. '24</td><td>2018.0</td><td>€ 6.650,-</td><td>12.014 km</td><td>Yamaha MT-07 ABS 2018 33KW A2 mogelijk Rijklaar</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>22.000 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2019.0</td><td>€ 7.450,-</td><td>9.200 km</td><td>YAMAHA MT-07 ABS (bj 2019)</td></tr>
+<tr><td>13 feb. '24</td><td>2022.0</td><td>€ 7.950,-</td><td>13.000 km</td><td>YAMAHA MT-07 ABS (bj 2022)</td></tr>
+<tr><td>Vandaag</td><td>2020.0</td><td>€ 7.200,-</td><td>9.349 km</td><td>YAMAHA MT-07 ABS (bj 2020) ABS MT07</td></tr>
+<tr><td>9 feb. '24</td><td>2014.0</td><td>€ 5.650,-</td><td>28.480 km</td><td>Yamaha MT-07 2014</td></tr>
+<tr><td>Vandaag</td><td>2019.0</td><td>€ 6.945,-</td><td>17.455 km</td><td>YAMAHA MT 07 ABS (bj 2019) MT07 35KW A2 Geschikt</td></tr>
+<tr><td>27 jan. '24</td><td>2021.0</td><td>€ 8.000,-</td><td>22.458 km</td><td>Yamaha MT-07 35kW/A2</td></tr>
+<tr><td>Eergisteren</td><td>2017.0</td><td>€ 6.700,-</td><td>26.300 km</td><td>Yamaha MT-07 | ABS | 2017</td></tr>
+<tr><td>8 feb. '24</td><td>2017.0</td><td>€ 5.800,-</td><td>37.000 km</td><td>YAMAHA MT-07 ABS</td></tr>
+<tr><td>7 feb. '24</td><td>2021.0</td><td>€ 8.149,-</td><td>7.321 km</td><td>Yamaha MT-07 BJ 2021 STORM FLUO</td></tr>
+<tr><td>12 feb. '24</td><td>2016.0</td><td>€ 4.100,-</td><td>57.000 km</td><td>Yamaha MT-07 2016</td></tr>
+<tr><td>Gisteren</td><td>2022.0</td><td>€ 7.950,-</td><td>3.283 km</td><td>Yamaha MT-07 35KW (bj 2022)</td></tr>
+<tr><td>5 feb. '24</td><td>nan</td><td>€ 6.250,-</td><td>nan</td><td>MT-07 2016 Akrapovic</td></tr>
+<tr><td>28 jan. '24</td><td>2017.0</td><td>€ 8.500,-</td><td>nan</td><td>Yamaha MT-07 Tracer 7 - A2</td></tr>
+<tr><td>9 feb. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>30.000 km</td><td>MT-07 ABS A2 of A in perfecte staat</td></tr>
+<tr><td>11 feb. '24</td><td>2016.0</td><td>€ 6.850,-</td><td>21.069 km</td><td>Yamaha MT-07 35KW A2 motor 2016 SC Project</td></tr>
+<tr><td>8 feb. '24</td><td>2023.0</td><td>€ 7.450,-</td><td>7.781 km</td><td>Yamaha Tour MT-07 / Eerste Eigenaar / Dubbele Remschijf / AB</td></tr>
+<tr><td>26 jan. '24</td><td>2017.0</td><td>€ 6.700,-</td><td>50.000 km</td><td>Yamaha MT-07 ABS - zwart met donker panterprint</td></tr>
+<tr><td>23 jan. '24</td><td>2018.0</td><td>€ 6.650,-</td><td>12.014 km</td><td>Yamaha MT-07 ABS 2018 33KW A2 mogelijk Rijklaar</td></tr>
+<tr><td>12 feb. '24</td><td>2018.0</td><td>€ 6.990,-</td><td>36.357 km</td><td>Supermooie Yamaha MT-07 ABS MT07ABS | 35KW (bj 2018)</td></tr>
+<tr><td>27 jan. '24</td><td>2023.0</td><td>€ 8.500,-</td><td>5.795 km</td><td>Yamaha MT-07  (2023) FABRIEKSGARANTIE 04-2025</td></tr>
+<tr><td>21 jan. '24</td><td>2019.0</td><td>€ 6.995,-</td><td>16.999 km</td><td>Yamaha MT-07 mt07 ABS (2019) *35KW mog.*</td></tr>
+<tr><td>4 feb. '24</td><td>2020.0</td><td>€ 6.950,-</td><td>19.500 km</td><td>MT07   MT-07   mt 07   2020 abs</td></tr>
+<tr><td>4 feb. '24</td><td>2019.0</td><td>€ 7.490,-</td><td>8.188 km</td><td>Yamaha MT-07 35KW (bj 2019)</td></tr>
+<tr><td>20 jan. '24</td><td>2022.0</td><td>€ 8.150,-</td><td>5.065 km</td><td>YAMAHA MTN690 MT-07 mt07 mt-07 (bj 2022) yamaha Topmotor</td></tr>
+<tr><td>17 jan. '24</td><td>2016.0</td><td>€ 7.850,-</td><td>18.119 km</td><td>Yamaha Tracer 700 mt-07 mt07 ABS (2016) *Kofferset*</td></tr>
+<tr><td>1 feb. '24</td><td>2017.0</td><td>€ 6.600,-</td><td>17.000 km</td><td>Yamaha MT-07 ABS Night fluo 2017</td></tr>
+<tr><td>1 feb. '24</td><td>2018.0</td><td>€ 6.999,-</td><td>7.390 km</td><td>Yamaha MT-07 abs (bj 2018)</td></tr>
+<tr><td>Gisteren</td><td>2017.0</td><td>€ 7.950,-</td><td>13.076 km</td><td>YAMAHA TRACER 700 ABS (bj 2017) MT07 MT 07 MT-07</td></tr>
+<tr><td>13 feb. '24</td><td>2021.0</td><td>€ 7.349,-</td><td>10.330 km</td><td>Yamaha MT-07 / MT07 / MT 07 ABS 35kW A2 geschikt! (2021)</td></tr>
+<tr><td>Eergisteren</td><td>2019.0</td><td>€ 7.499,-</td><td>13.203 km</td><td>Yamaha MT 07 ABS (bj 2019)</td></tr>
+<tr><td>Gisteren</td><td>2021.0</td><td>€ 7.990,-</td><td>12.996 km</td><td>YAMAHA MT 07 ABS (bj 2021)  12 maanden garantie 35 kw</td></tr>
+<tr><td>13 feb. '24</td><td>2018.0</td><td>€ 6.999,-</td><td>12.874 km</td><td>Yamaha MT-07 ABS Matgrijs MT07 Puig windscherm MT 07 bj.2018</td></tr>
+<tr><td>Gisteren</td><td>2017.0</td><td>€ 7.950,-</td><td>13.076 km</td><td>YAMAHA TRACER 700 ABS (bj 2017) MT07 MT 07 MT-07</td></tr>
+<tr><td>2 feb. '24</td><td>2019.0</td><td>€ 7.450,-</td><td>9.200 km</td><td>YAMAHA MT-07 ABS (bj 2019)</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 7.950,-</td><td>2.900 km</td><td>Yamaha MT-07 ABS (bj 2021)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>22.000 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>13 feb. '24</td><td>2022.0</td><td>€ 7.950,-</td><td>13.000 km</td><td>YAMAHA MT-07 ABS (bj 2022)</td></tr>
+<tr><td>2 feb. '24</td><td>2017.0</td><td>€ 6.750,-</td><td>18.000 km</td><td>YAMAHA MT-07 ABS (bj 2017)</td></tr>
+<tr><td>2 feb. '24</td><td>2015.0</td><td>€ 6.750,-</td><td>26.000 km</td><td>Yamaha MT-07 MOTO CAGE (bj 2015)</td></tr>
+<tr><td>2 feb. '24</td><td>2017.0</td><td>€ 6.950,-</td><td>20.000 km</td><td>Yamaha MT-07 ABS (bj 2017)</td></tr>
+<tr><td>Eergisteren</td><td>2020.0</td><td>€ 7.750,-</td><td>15.000 km</td><td>Yamaha MT-07 ABS (bj 2020)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.750,-</td><td>18.000 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2020.0</td><td>€ 7.750,-</td><td>15.000 km</td><td>Yamaha MT-07 ABS (bj 2020)</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 7.950,-</td><td>21.700 km</td><td>Yamaha MT-07 ABS (bj 2021)</td></tr>
+<tr><td>2 feb. '24</td><td>2016.0</td><td>€ 6.450,-</td><td>21.000 km</td><td>Yamaha MT-07 (bj 2016)</td></tr>
+<tr><td>Eergisteren</td><td>2020.0</td><td>€ 6.999,-</td><td>22.941 km</td><td>Yamaha MT 07 ABS (bj 2019)  - Akrapovic</td></tr>
+<tr><td>10 feb. '24</td><td>2016.0</td><td>€ 5.650,-</td><td>43.040 km</td><td>Yamaha MT07 / MT-07 / MT 07 ABS - Hyperpro - Akra - A2!</td></tr>
+<tr><td>31 jan. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>17.946 km</td><td>YAMAHA MT 07 ABS (bj 2018) MT-07 MT07 ABS</td></tr>
+<tr><td>17 jan. '24</td><td>2022.0</td><td>€ 8.650,-</td><td>7.238 km</td><td>YAMAHA MT07 MT-07 mt07 mt-07 Akrapovic (bj 2022) yamaha</td></tr>
+<tr><td>28 jan. '24</td><td>2017.0</td><td>€ 6.495,-</td><td>18.675 km</td><td>Yamaha MT 07 ABS MT-07 MT07 Nieuwstaat!</td></tr>
+<tr><td>9 feb. '24</td><td>2021.0</td><td>€ 8.150,-</td><td>2.707 km</td><td>YAMAHA MT-07 ABS 35KW (bj 2021) yamaha mt07 35kw mt-07</td></tr>
+<tr><td>21 jan. '24</td><td>nan</td><td>€ 6.990,-</td><td>nan</td><td>Yamaha mt-07 tracer 700</td></tr>
+<tr><td>12 feb. '24</td><td>2021.0</td><td>€ 6.999,-</td><td>8.193 km</td><td>Yamaha MT-07 ABS Icon Blue 2021 8.193 km MT07 MT 07</td></tr>
+<tr><td>13 feb. '24</td><td>2017.0</td><td>€ 7.740,-</td><td>17.646 km</td><td>YAMAHA TRACER 700 ABS (bj 2017) MT-07 ZEER NETTE STAAT</td></tr>
+<tr><td>13 feb. '24</td><td>2019.0</td><td>€ 7.099,-</td><td>12.609 km</td><td>Yamaha MT-07 ABS 2019 mt 07 ICE-FLUO MT07</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 7.950,-</td><td>20.000 km</td><td>Yamaha MT-07 ABS (bj 2021)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.750,-</td><td>21.774 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>3 feb. '24</td><td>2022.0</td><td>€ 7.950,-</td><td>5.564 km</td><td>Yamaha MT-07 ABS (bj 2022)</td></tr>
+<tr><td>2 feb. '24</td><td>2015.0</td><td>€ 6.750,-</td><td>21.000 km</td><td>YAMAHA MT-07 ABS (bj 2015)</td></tr>
+<tr><td>1 feb. '24</td><td>2017.0</td><td>€ 7.250,-</td><td>21.000 km</td><td>Yamaha MT-07 ABS (bj 2017)</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 7.950,-</td><td>1.443 km</td><td>Yamaha MT-07 ABS (bj 2021)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>11.000 km</td><td>YAMAHA MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 7.950,-</td><td>1.443 km</td><td>Yamaha MT-07 ABS (bj 2021)</td></tr>
+<tr><td>6 feb. '24</td><td>2015.0</td><td>€ 6.450,-</td><td>4.980 km</td><td>Yamaha MT-07 ABS (bj 2015)</td></tr>
+<tr><td>9 feb. '24</td><td>2018.0</td><td>€ 6.990,-</td><td>20.300 km</td><td>Yamaha MT-07 (bj 2018)</td></tr>
+<tr><td>6 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS (bj 2024)</td></tr>
+<tr><td>29 jan. '24</td><td>2018.0</td><td>€ 6.750,-</td><td>6.806 km</td><td>Yamaha Mt07</td></tr>
+<tr><td>13 feb. '24</td><td>2019.0</td><td>€ 6.950,-</td><td>18.880 km</td><td>Yamaha MT-07 ABS Ice Fluo (2019) 35kw A2</td></tr>
+<tr><td>9 feb. '24</td><td>2022.0</td><td>€ 8.000,-</td><td>11.400 km</td><td>Yamaha MT07 MT-07 ABS 2022 35KW/A2</td></tr>
+<tr><td>8 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>1 km</td><td>Yamaha MT-07 (bj 2024)</td></tr>
+<tr><td>Eergisteren</td><td>2019.0</td><td>€ 7.299,-</td><td>23.785 km</td><td>Yamaha MT 07 ABS (bj 2019)</td></tr>
+<tr><td>Eergisteren</td><td>2015.0</td><td>€ 6.799,-</td><td>14.257 km</td><td>Yamaha MT 07 ABS Motocage (bj 2015)</td></tr>
+<tr><td>Gisteren</td><td>2021.0</td><td>€ 7.850,-</td><td>6.476 km</td><td>Yamaha MT-07 ABS 2021 mt 07 6500km! MT07</td></tr>
+<tr><td>Eergisteren</td><td>2022.0</td><td>€ 8.250,-</td><td>10.384 km</td><td>Yamaha MT-07 ABS (bj 2022)</td></tr>
+<tr><td>2 feb. '24</td><td>2014.0</td><td>€ 6.250,-</td><td>27.562 km</td><td>Yamaha MT-07 (bj 2014)</td></tr>
+<tr><td>2 feb. '24</td><td>2016.0</td><td>€ 6.450,-</td><td>23.000 km</td><td>Yamaha MT-07 (bj 2016)</td></tr>
+<tr><td>2 feb. '24</td><td>2020.0</td><td>€ 7.750,-</td><td>4.000 km</td><td>Yamaha MT-07 ABS (bj 2020)</td></tr>
+<tr><td>5 feb. '24</td><td>2022.0</td><td>€ 8.250,-</td><td>10.000 km</td><td>Yamaha MT-07 ABS (bj 2022)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.450,-</td><td>24.000 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2019.0</td><td>€ 7.250,-</td><td>16.000 km</td><td>Yamaha MT-07 ABS (bj 2019)</td></tr>
+<tr><td>Gisteren</td><td>2016.0</td><td>€ 6.799,-</td><td>18.948 km</td><td>Yamaha MT-07 ABS *NIGHT FLUO* Puig MT 07 GARANTIE MT07 Nardo</td></tr>
+<tr><td>2 feb. '24</td><td>2016.0</td><td>€ 6.750,-</td><td>28.338 km</td><td>Yamaha MT-07 (bj 2016)</td></tr>
+<tr><td>31 jan. '24</td><td>2019.0</td><td>€ 7.450,-</td><td>24.000 km</td><td>Yamaha MT-07 ABS (bj 2019)</td></tr>
+<tr><td>7 feb. '24</td><td>2023.0</td><td>€ 8.750,-</td><td>1.200 km</td><td>YAMAHA MT-07 ABS (bj 2023)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.450,-</td><td>9.861 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.450,-</td><td>22.000 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2022.0</td><td>€ 8.250,-</td><td>7.000 km</td><td>Yamaha MT-07 ABS (bj 2022)</td></tr>
+<tr><td>2 feb. '24</td><td>2022.0</td><td>€ 7.950,-</td><td>9.757 km</td><td>Yamaha MT-07 ABS (bj 2022)</td></tr>
+<tr><td>7 feb. '24</td><td>2019.0</td><td>€ 7.450,-</td><td>15.000 km</td><td>YAMAHA MT-07 ABS (bj 2019)</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 6.750,-</td><td>36.750 km</td><td>Yamaha MT-07 (bj 2018)</td></tr>
+<tr><td>27 jan. '24</td><td>2020.0</td><td>€ 7.499,-</td><td>13.349 km</td><td>Yamaha MT-07 ABS 35kw (bj 2020)</td></tr>
+<tr><td>30 jan. '24</td><td>nan</td><td>€ 6.750,-</td><td>nan</td><td>Mooie Mt-07 2017 35 KW  (Teruggevoerd)</td></tr>
+<tr><td>6 feb. '24</td><td>2015.0</td><td>€ 6.250,-</td><td>26.520 km</td><td>Yamaha MT-07 Motocage Editie</td></tr>
+<tr><td>1 feb. '24</td><td>2020.0</td><td>€ 7.390,-</td><td>28.737 km</td><td>Yamaha MT-07 ABS 35 kw (bj 2020)</td></tr>
+<tr><td>4 feb. '24</td><td>2014.0</td><td>€ 5.800,-</td><td>23.500 km</td><td>2014 Yamaha MT07 - MT-07</td></tr>
+<tr><td>2 feb. '24</td><td>2015.0</td><td>€ 6.499,-</td><td>15.049 km</td><td>YAMAHA MT-07 ABS (bj 2015)</td></tr>
+<tr><td>7 feb. '24</td><td>2018.0</td><td>€ 6.450,-</td><td>47.766 km</td><td>Yamaha MT-07 ABS</td></tr>
+<tr><td>9 feb. '24</td><td>2017.0</td><td>€ 7.000,-</td><td>15.000 km</td><td>Yamaha MT-07 ABS 2017 Lava Red Edition</td></tr>
+<tr><td>9 feb. '24</td><td>2017.0</td><td>€ 6.850,-</td><td>35.054 km</td><td>Yamaha MT-07 ABS (bj 2017)</td></tr>
+<tr><td>12 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>1 km</td><td>Yamaha MT-07 35KW ABS (bj 2024)</td></tr>
+<tr><td>Eergisteren</td><td>2018.0</td><td>€ 7.499,-</td><td>23.126 km</td><td>Yamaha MT 07 ABS (bj 2018)</td></tr>
+<tr><td>Gisteren</td><td>2021.0</td><td>€ 7.850,-</td><td>11.606 km</td><td>Yamaha MT-07 ABS 2021 mt07 'TOPSTAAT' mt 07</td></tr>
+<tr><td>Gisteren</td><td>2014.0</td><td>€ 6.100,-</td><td>15.300 km</td><td>Yamaha MT-07 # 2014 # 15.300KM # Race Bleu # Als Nieuw!</td></tr>
+<tr><td>2 feb. '24</td><td>2018.0</td><td>€ 7.250,-</td><td>26.678 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>2 feb. '24</td><td>2014.0</td><td>€ 6.450,-</td><td>19.000 km</td><td>Yamaha MT-07 ABS (bj 2014)</td></tr>
+<tr><td>Eergisteren</td><td>2016.0</td><td>€ 6.750,-</td><td>29.571 km</td><td>Yamaha MT-07 ABS (bj 2016)</td></tr>
+<tr><td>2 feb. '24</td><td>2014.0</td><td>€ 6.250,-</td><td>26.691 km</td><td>Yamaha MT-07 (bj 2014)</td></tr>
+<tr><td>2 feb. '24</td><td>2020.0</td><td>€ 7.750,-</td><td>14.000 km</td><td>YAMAHA MT-07 ABS (bj 2020)</td></tr>
+<tr><td>2 feb. '24</td><td>2014.0</td><td>€ 6.250,-</td><td>23.000 km</td><td>Yamaha MT-07 (bj 2014)</td></tr>
+<tr><td>2 feb. '24</td><td>2019.0</td><td>€ 7.450,-</td><td>21.000 km</td><td>Yamaha MT-07 ABS (bj 2019)</td></tr>
+<tr><td>2 feb. '24</td><td>2020.0</td><td>€ 7.450,-</td><td>18.000 km</td><td>Yamaha MT-07 ABS (bj 2020)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.499,-</td><td>nan</td><td>Yamaha MT-07 PURE 35KW PRE-ORDER NU ! (bj 2024)</td></tr>
+<tr><td>11 feb. '24</td><td>nan</td><td>€ 7.600,-</td><td>nan</td><td>Mt 07 2020 55kw akrapovic Carbon racing line</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 8.000,-</td><td>15.939 km</td><td>Yamaha MT 07 ABS Icon blue 35kw 2021, 15.936 KM</td></tr>
+<tr><td>8 feb. '24</td><td>2020.0</td><td>€ 7.450,-</td><td>14.552 km</td><td>Yamaha MT 07 ABS (bj 2020)</td></tr>
+<tr><td>12 feb. '24</td><td>2023.0</td><td>€ 7.999,-</td><td>13.039 km</td><td>Yamaha MT07 (2023) 13.039km</td></tr>
+<tr><td>19 jan. '24</td><td>2016.0</td><td>€ 6.990,-</td><td>7.489 km</td><td>Prachtige Yamaha MT-07 ABS MT 07 MT07 (bj 2016)</td></tr>
+<tr><td>6 feb. '24</td><td>2023.0</td><td>€ 8.250,-</td><td>1.890 km</td><td>Yamaha MT-07 ABS (bj 2023)</td></tr>
+<tr><td>23 jan. '24</td><td>2020.0</td><td>€ 7.290,-</td><td>16.250 km</td><td>Yamaha MT-07 ABS 35Kw (bj 2020)</td></tr>
+<tr><td>24 jan. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS GRATIS QUICKSHIFTER (bj 2024)</td></tr>
+<tr><td>2 feb. '24</td><td>2020.0</td><td>€ 7.490,-</td><td>19.133 km</td><td>Yamaha MT 07 35 KW (bj 2020)</td></tr>
+<tr><td>28 jan. '24</td><td>2016.0</td><td>€ 6.590,-</td><td>24.507 km</td><td>YAMAHA MT 07 Black edition ABS MT07 35KW A2 mogelijk MT-07</td></tr>
+<tr><td>2 feb. '24</td><td>2021.0</td><td>€ 8.000,-</td><td>15.939 km</td><td>Yamaha MT 07 ABS Icon blue 35kw 2021, 15.936 KM</td></tr>
+<tr><td>11 feb. '24</td><td>nan</td><td>€ 7.600,-</td><td>nan</td><td>Mt 07 2020 55kw akrapovic Carbon racing line</td></tr>
+<tr><td>25 jan. '24</td><td>2014.0</td><td>€ 5.999,-</td><td>30.054 km</td><td>YAMAHA MT-07 ABS 2014 rood MT07 MT 07 ZGAN orig NL 1ste eig.</td></tr>
+<tr><td>26 jan. '24</td><td>2020.0</td><td>€ 7.599,-</td><td>18.832 km</td><td>YAMAHA MT 07 ABS 35KW (bj 2020)</td></tr>
+<tr><td>1 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT 07 (bj 2024)</td></tr>
+<tr><td>2 feb. '24</td><td>2014.0</td><td>€ 6.399,-</td><td>21.147 km</td><td>Yamaha MT-07 *NIEUWSTAAT* BAGSTER zadel MT 07 MT07 GARANTIE</td></tr>
+<tr><td>24 jan. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>31 jan. '24</td><td>2016.0</td><td>€ 6.899,-</td><td>15.674 km</td><td>Yamaha MT-07 ABS *AKRAPOVIC* MT07 veel opties MT 07 GARANTIE</td></tr>
+<tr><td>19 jan. '24</td><td>2015.0</td><td>€ 5.499,-</td><td>36.334 km</td><td>Yamaha MT 07 / MT-07 / MT07 ABS donkerpaars A2 mogelijk 2015</td></tr>
+<tr><td>3 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT 07 (bj 2024)</td></tr>
+<tr><td>24 jan. '24</td><td>2016.0</td><td>€ 7.950,-</td><td>9.189 km</td><td>YAMAHA MT-07 TRACER 700 ABS MT07</td></tr>
+<tr><td>2 feb. '24</td><td>2022.0</td><td>€ 7.990,-</td><td>26.939 km</td><td>Prachtige Yamaha MT 07 ABS MT07 MT-07 (bj 2022)</td></tr>
+<tr><td>21 jan. '24</td><td>2019.0</td><td>€ 6.450,-</td><td>29.900 km</td><td>YAMAHA MT 07 ABS (bj 2019) MT07 MT-07</td></tr>
+<tr><td>22 jan. '24</td><td>2022.0</td><td>€ 8.499,-</td><td>2.998 km</td><td>YAMAHA MT 07 - 2022 - Garantie - ABS -</td></tr>
+<tr><td>27 jan. '24</td><td>2020.0</td><td>€ 7.250,-</td><td>9.262 km</td><td>Yamaha MT-07 | ABS | 2020 | Icon blue | 9.262 KM! | LED</td></tr>
+<tr><td>1 feb. '24</td><td>2022.0</td><td>€ 7.999,-</td><td>10.180 km</td><td>YAMAHA MT 07 ABS (bj 2022)</td></tr>
+<tr><td>26 jan. '24</td><td>2017.0</td><td>€ 6.750,-</td><td>14.268 km</td><td>Yamaha MT-07 ABS 2017 mt 07 MT07</td></tr>
+<tr><td>27 jan. '24</td><td>2021.0</td><td>€ 8.150,-</td><td>12.316 km</td><td>YAMAHA MT07 MT-07  (bj 2021) mt mt07 mt-07 Super compleet</td></tr>
+<tr><td>6 feb. '24</td><td>2017.0</td><td>€ 6.950,-</td><td>21.832 km</td><td>Yamaha MT-07 ABS (bj 2017)</td></tr>
+<tr><td>21 jan. '24</td><td>2021.0</td><td>€ 7.790,-</td><td>16.300 km</td><td>Yamaha MT-07 (bj 2021)</td></tr>
+<tr><td>11 feb. '24</td><td>2016.0</td><td>€ 6.195,-</td><td>21.515 km</td><td>YAMAHA MT 07 ABS (bj 2016)</td></tr>
+<tr><td>2 feb. '24</td><td>2017.0</td><td>€ 7.950,-</td><td>23.486 km</td><td>YAMAHA XSR 700 (bj 2017)</td></tr>
+<tr><td>26 jan. '24</td><td>2019.0</td><td>€ 7.750,-</td><td>14.000 km</td><td>Yamaha MT-07 ABS (bj 2019)</td></tr>
+<tr><td>17 jan. '24</td><td>2020.0</td><td>€ 7.750,-</td><td>11.000 km</td><td>YAMAHA MT-07 ABS (bj 2020)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.499,-</td><td>nan</td><td>Yamaha MT-07 PURE PRE-ORDER NU ! (bj 2024)</td></tr>
+<tr><td>6 feb. '24</td><td>2024.0</td><td>€ 8.499,-</td><td>nan</td><td>Yamaha MT-07 PURE 35KW (bj 2024)</td></tr>
+<tr><td>6 feb. '24</td><td>2015.0</td><td>€ 6.450,-</td><td>22.684 km</td><td>Yamaha MT-07 ABS (bj 2015)</td></tr>
+<tr><td>18 jan. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>1 km</td><td>Yamaha MT-07 (bj 2024)</td></tr>
+<tr><td>24 jan. '24</td><td>2020.0</td><td>€ 7.450,-</td><td>7.152 km</td><td>Yamaha MT-07 ABS (bj 2020)</td></tr>
+<tr><td>1 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT 07 (bj 2024)</td></tr>
+<tr><td>3 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT 07 (bj 2024)</td></tr>
+<tr><td>3 feb. '24</td><td>2014.0</td><td>€ 6.250,-</td><td>14.000 km</td><td>Yamaha MT-07 ABS, 14.000 km ! Nieuwstaat en vol opties !</td></tr>
+<tr><td>29 jan. '24</td><td>2022.0</td><td>€ 8.350,-</td><td>3.172 km</td><td>YAMAHA MTN690-U MT07 MT-07 35KW mt07 (bj 2022) mt-07</td></tr>
+<tr><td>30 jan. '24</td><td>2022.0</td><td>€ 8.290,-</td><td>1.405 km</td><td>Hele mooie Yamaha MT 07 ABS MT07 MT-07 | 35KW (bj 2022)</td></tr>
+<tr><td>6 feb. '24</td><td>2024.0</td><td>€ 8.499,-</td><td>nan</td><td>Yamaha MT-07 PURE ABS (bj 2024)</td></tr>
+<tr><td>28 jan. '24</td><td>2016.0</td><td>€ 6.790,-</td><td>29.673 km</td><td>YAMAHA MT-07 Racing Blue 35KW A2 MT 07 MT07 Zard uitlaat</td></tr>
+<tr><td>1 feb. '24</td><td>2021.0</td><td>€ 7.499,-</td><td>17.104 km</td><td>Yamaha MT 07 ABS (bj 2021)</td></tr>
+<tr><td>26 jan. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT 07 ABS (bj 2024)</td></tr>
+<tr><td>9 feb. '24</td><td>2015.0</td><td>€ 5.600,-</td><td>36.500 km</td><td>Mooie Yamaha MT-07| Quickshifter</td></tr>
+<tr><td>24 jan. '24</td><td>2020.0</td><td>€ 7.450,-</td><td>12.000 km</td><td>Yamaha MT-07 ABS (bj 2020)</td></tr>
+<tr><td>Gisteren</td><td>2018.0</td><td>€ 6.450,-</td><td>42.451 km</td><td>Yamaha MT-07 ABS (bj 2018)</td></tr>
+<tr><td>30 jan. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS GRATIS QUICKSHIFTER! (bj 2024)</td></tr>
+<tr><td>7 feb. '24</td><td>2020.0</td><td>€ 6.995,-</td><td>22.634 km</td><td>YAMAHA MT 07 ABS (bj 2020)</td></tr>
+<tr><td>25 jan. '24</td><td>2022.0</td><td>€ 7.999,-</td><td>3.300 km</td><td>YAMAHA MT 07 ABS - 2022 - 35KW - A2 - Garantie - Comfort</td></tr>
+<tr><td>6 feb. '24</td><td>2017.0</td><td>€ 6.950,-</td><td>17.933 km</td><td>YAMAHA MT 07 ABS MT07 MT09 MT</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 35KW NU MET GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS NU MET GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>20 jan. '24</td><td>2020.0</td><td>€ 7.390,-</td><td>18.311 km</td><td>Prachtige Yamaha MT 07 ABS MT07 (bj 2020)</td></tr>
+<tr><td>26 jan. '24</td><td>2022.0</td><td>€ 7.999,-</td><td>4.600 km</td><td>YAMAHA MT 07 ABS - Garantie - Nieuwstaat</td></tr>
+<tr><td>20 jan. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT 07 (bj 2024)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS NU MET GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 ABS NU MET GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 35KW NU MET GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>9 feb. '24</td><td>2024.0</td><td>€ 8.999,-</td><td>nan</td><td>Yamaha MT-07 35KW NU MET GRATIS QUICKSHIFTER ! (bj 2024)</td></tr>
+<tr><td>30 jan. '24</td><td>2023.0</td><td>€ 8.190,-</td><td>1.378 km</td><td>Yamaha MT 07 ABS (bj 2023)</td></tr>
+<tr><td>31 jan. '24</td><td>2021.0</td><td>Gereserveerd</td><td>47.351 km</td><td>Yamaha MT-07 ABS</td></tr>
+<tr><td>22 jan. '24</td><td>2019.0</td><td>Gereserveerd</td><td>11.768 km</td><td>YAMAHA MT 07 - 35KW - A2 - Nieuwstaat</td></tr>
+<tr><td>31 jan. '24</td><td>2023.0</td><td>Gereserveerd</td><td>1.400 km</td><td>YAMAHA MT 07 - 2023 - TFT scherm - A2/35kw</td></tr>
+<tr><td>25 jan. '24</td><td>2018.0</td><td>€ 6.690,-</td><td>17.348 km</td><td>Yamaha MT07 | MT-07 | MT 07 ABS (bj 2018)</td></tr>
+<tr><td>17 jan. '24</td><td>2020.0</td><td>€ 7.650,-</td><td>20.436 km</td><td>YAMAHA MT 07 ABS (bj 2020)</td></tr>
+<tr><td>17 jan. '24</td><td>2020.0</td><td>€ 7.650,-</td><td>20.436 km</td><td>YAMAHA MT 07 ABS (bj 2020)</td></tr>
+<tr><td>21 jan. '24</td><td>2022.0</td><td>€ 8.195,-</td><td>3.361 km</td><td>YAMAHA MT 07 ABS (bj 2022)</td></tr>
+<tr><td>19 jan. '24</td><td>2018.0</td><td>€ 6.999,-</td><td>14.797 km</td><td>Yamaha MT-07 TRACER Tracer 700 ABS (bj 2018)</td></tr>
+<tr><td>8 feb. '24</td><td>2014.0</td><td>Gereserveerd</td><td>31.779 km</td><td>Yamaha MT 07 MT07 Abs: Uniek, Leovince, , Led, gb racing,</td></tr>
+<tr><td>31 jan. '24</td><td>2023.0</td><td>Gereserveerd</td><td>2.500 km</td><td>YAMAHA MT 07 - 2023 - Garantie - Tft scherm</td></tr>
+<tr><td>28 jan. '24</td><td>2015.0</td><td>Gereserveerd</td><td>18.100 km</td><td>Yamaha MT-07 ABS *MOTO CAGE* Leovince uitlaat MT07 MT 07</td></tr>
+<tr><td>28 jan. '24</td><td>2023.0</td><td>Gereserveerd</td><td>4.985 km</td><td>YAMAHA MT 07 - 2023 - Quickshifter - A2 - Vol Opties</td></tr>
+<tr><td>18 jan. '24</td><td>2019.0</td><td>Gereserveerd</td><td>6.905 km</td><td>YAMAHA MT 07 ABS - 2019 - Leovince - A2/35Kw</td></tr>
+<tr><td>18 jan. '24</td><td>2022.0</td><td>Gereserveerd</td><td>7.875 km</td><td>YAMAHA MT 07 ABS - 2022 - A2 - 35KW - Nieuwstaat</td></tr>
+    </table>
+</body>
